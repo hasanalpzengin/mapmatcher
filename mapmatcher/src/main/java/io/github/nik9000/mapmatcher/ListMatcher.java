@@ -77,6 +77,24 @@ public class ListMatcher extends TypeSafeMatcher<List<?>> {
     public ListMatcher item(Object value) {
         return item(matcherFor(value, false));
     }
+    
+  @Override
+  protected boolean matchesSafely(List<?> item) {
+    for(Matcher<?> matcher: matchers){
+        Iterator<?> value = item.iterator();
+        boolean matching = false;
+        while(value.hasNext()){
+            if(matcher.matches(value.next())){
+                matching = true;
+            }
+        }
+        // if any matcher doesn't match with any value of item
+        if(!matching){
+            return false;
+        }
+    }
+    return true;
+  }
 
     /*
      * Apply the extraOk to all children
