@@ -271,7 +271,7 @@ public class MapMatcher extends TypeSafeMatcher<Map<?, ?>> {
     }
     if (value instanceof String) {
       if(value.toString().startsWith("[contains]")){
-        String containsValue = value.toString().split("]")[1].trim();
+        String containsValue = value.toString().replaceFirst("^\\[contains\\]", "").trim();
         return containsString(containsValue);
       }
     }
