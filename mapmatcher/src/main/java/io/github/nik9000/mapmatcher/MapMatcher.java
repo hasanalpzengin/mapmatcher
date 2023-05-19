@@ -7,8 +7,7 @@ package io.github.nik9000.mapmatcher;
 
 import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -269,6 +268,12 @@ public class MapMatcher extends TypeSafeMatcher<Map<?, ?>> {
     }
     if (value instanceof Matcher) {
       return (Matcher<?>) value;
+    }
+    if (value instanceof String) {
+      if(value.toString().startsWith("[contains]")){
+        String containsValue = value.toString().split("]")[1].trim();
+        return containsString(containsValue);
+      }
     }
     return equalTo(value);
   }
