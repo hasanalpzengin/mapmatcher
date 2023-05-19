@@ -7,7 +7,9 @@ package io.github.nik9000.mapmatcher;
 
 import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.containsString;
 
 import java.util.LinkedHashMap;
 import java.util.List;
