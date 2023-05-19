@@ -89,7 +89,7 @@ public class ListMatcher extends TypeSafeMatcher<List<?>> {
                 }
             }
             // if any matcher doesn't match with any value of item
-            if (!matching) {
+            if (false == matching) {
                 return false;
             }
         }
